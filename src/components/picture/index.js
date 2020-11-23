@@ -2,25 +2,10 @@ import React from 'react'
 
 import { PictureContainer, Image } from './styles'
 
-
-
-export const Picture = ({item, setModal, modal, setImage}) =>{    
-
-
-    const handleClick = e =>{
-        e.preventDefault()
-        if (modal === false) setModal(true)
-        if (modal === true) setModal(false)
-        setImage(item)
-    }
-
-
+export const Picture = ({item}) =>{ 
     return(    
-        <>
-            <PictureContainer onClick={handleClick}>
-                <Image Loading='lazy' src={item.largeImageURL} alt=""/>
-            </PictureContainer>
-        </>        
-
+        <PictureContainer to={`/Detail/${item.id}`}>
+            <Image Loading='lazy' src={item.largeImageURL} alt=""/>
+        </PictureContainer>
     )
 }

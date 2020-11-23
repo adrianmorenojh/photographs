@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Search, Input, Icon } from './styles'
 import {FiSearch} from 'react-icons/fi'
 
-export const Searcher = () => {
+export const Searcher = ({setSearch}) => {
     
     const [ state, setState ] = useState({value:''})
 
@@ -11,16 +11,14 @@ export const Searcher = () => {
     }
     const handleSubmit = e =>{
         e.preventDefault()
-        console.log('hiciste submit',  state.value)
+        setSearch(state.value)
     }
-    console.log('searcher', state.value)
-
     return(
         <Search onSubmit={handleSubmit} >
-            <Icon For="search" > 
+            <Icon > 
                 <FiSearch/>
-            </Icon>
             <Input type="search" id="search" placeholder="Escribe una categoria.." value={state.value} onChange={handleChange}/>
+            </Icon>
         </Search>
     )
 }

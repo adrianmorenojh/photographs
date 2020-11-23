@@ -1,30 +1,50 @@
 import React from 'react'
 
-import { ImageContainer, Div, DetailContainer, Image, User, H2, UserImage, P, Views } from './styles'
+import { ImageContainer, Div, DetailContainer, Image, User, H2, UserImage,  Views, ExitIconContainer } from './styles'
 
-import { GrView } from "react-icons/gr";
+import {useParams} from 'react-router-dom'
+import { GET_IMAGE } from '../../gql/queries/images'
 
-export const ImageDetail = ({image, show}) =>{
-    console.log("modal?", show)
+import { useQuery } from '@apollo/client';
 
-    return( show === true?  
+import { AiOutlineClose, AiFillEye } from "react-icons/ai";
+
+export const ImageDetail = () => {
+
+    const {id} = useParams()
+    
+    const { loading, error, data } = useQuery(GET_IMAGE, {
+        variables:  { id },
+    },)
+    
+    console.log("router", data)
+    if(loading) {
+        return <p>Loading...</p>
+    }
+    if(error){
+        return <p>Error</p>
+    }
+
+    return( 
         <Div>
             <ImageContainer >
-                <Image src={image.largeImageURL} />
-                <P>compartida por:</P>
+                <Image src={data.image.largeImageURL} />
                 <DetailContainer>
                         <User>
-                            <UserImage src={image.userImageURL} />
-                            <H2>{image.user}</H2>
+                            <UserImage src={data.image.userImageURL} />
+                            <H2>{data.image.user}</H2>
                         </User>
-                        <H2>{image.tags}</H2>
+                        <H2>{data.image.tags}</H2>
                         <Views>
-                            <GrView size="15px" margin="5px"/>
-                            <H2>{image.views}</H2>
+                            <AiFillEye size="15px" margin="5px" />
+                            <H2>{data.image.views}</H2>
                         </Views>
                 </DetailContainer>
+                    <ExitIconContainer to='/' >
+                        <AiOutlineClose />
+                    </ExitIconContainer>
             </ImageContainer>
-        </Div>: null
+        </Div>
     )
 }
 

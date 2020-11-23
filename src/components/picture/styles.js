@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-export const PictureContainer = styled.div`
+export const PictureContainer = styled(Link)`
     &:nth-child(11n+1){
         grid-column: span 1;
     }

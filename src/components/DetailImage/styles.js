@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Div = styled.div`
     background-color: rgba(0, 0, 0, .6);
@@ -14,37 +15,48 @@ export const Div = styled.div`
     justify-content:center;
 `
 
+export const ExitIconContainer = styled(Link)`
+    position: absolute;
+    top: -14px;
+    right: -16px;
+    color:white;
+    @media(max-width:767px){
+        display:none;
+    }
+`
+
 export const ImageContainer = styled.div`
-    // margin:auto;
-    max-height: 100vh;
+    max-height: 470px;
     width:700px;
     border-radius:2px;
-    background-color: ${({ theme }) => theme.BackgroundHome};
-
-    @media(max-height: 420px ) {
-        overflow-y: scroll;
-      }
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    // @media(max-height: 768px ) {
+    //     height:1000px;
+    //     max-height:470px;
+    //   }
 `
 
 export const DetailContainer = styled.div`
     display:flex;
-    padding: 5px 10px;
+    padding: 2px 6px;
     box-sizing:border-box;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    color: white;
 `
 
 export const Image = styled.img`
-    width: 100%;
+    max-width: 100%;
     border-radius: 2px 2px 0 0; 
-    max-height: 100vh;
-`
-export const P = styled.p`
-    font-size:16px;
-    font-size: 12px;
-    font-weight: bold;
-    opacity: 0.4;
-    margin: 0 5px;
+    max-height: 470px;
 `
 
 export const User = styled.div`
@@ -73,4 +85,5 @@ export const Views = styled.div`
     display:flex;   
     text-align:center;
     justify-content:center;
+    color:white !important;
 `

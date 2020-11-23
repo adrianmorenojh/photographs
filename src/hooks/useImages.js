@@ -6,11 +6,9 @@ import { useQuery } from '@apollo/client';
 
 const INITIAL_PAGE = 1
 
-export const useImages = ( category ) =>{
-
-    const [state, setState] = useState([]) 
-    const [ page, setPage ] = useState(1) 
-
+export const useImages = ( category) =>{
+    const [page, setPage] = useState(1)
+    const [state, setState] = useState([])  
     const { loading, error, data } = useQuery(GET_IMAGES, {
         variables:  { page, category},
     },)
@@ -20,20 +18,14 @@ export const useImages = ( category ) =>{
         if (page !== INITIAL_PAGE) return
         if (data)
         setState(data.images)
-    },[data, page])
+    },[data, page, category])
 
     useEffect(() => {
         if (page === INITIAL_PAGE) return
         if (data)
         setState(prevImages => prevImages.concat(data.images))
-    },[data, page])
+    },[data, page, category])
 
-    // const HandleNextPage = e =>{
-    //     e.preventDefault()
-    //     setPage(prevPage => prevPage + 1)
-    // }
-
-
- return  { loading, error, state, setPage }
+ return   {loading, error, state, setPage}
 }
 
