@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const Div = styled.div`
     background-color: rgba(0, 0, 0, .6);
@@ -9,13 +8,14 @@ export const Div = styled.div`
     top:0; 
     // padding-top: 60px;
     left:0;
-    // display:${props => props.display};
-    display:flex;
+    display:${props => props.display};
+    // display:flex;
     align-items:center;
     justify-content:center;
 `
 
-export const ExitIconContainer = styled(Link)`
+export const ExitIconContainer = styled.div`
+    cursor:pointer;
     position: absolute;
     top: -14px;
     right: -16px;

@@ -10,6 +10,7 @@ export const Pictures = styled.section`
     grid-gap: .3rem;
     grid-auto-flow: row dense;
     margin: 0px;
+    border:none;
 
     @media all and (min-width: 280px) {
         grid-template-columns: repeat(1, 1fr);

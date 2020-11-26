@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { ImageContainer, Div, DetailContainer, Image, User, H2, UserImage,  Views, ExitIconContainer } from './styles'
 
-import {useParams} from 'react-router-dom'
+
+import DetailContext from '../../context/DetailContextProvider'
+
 import { GET_IMAGE } from '../../gql/queries/images'
 
 import { useQuery } from '@apollo/client';
@@ -11,22 +13,28 @@ import { AiOutlineClose, AiFillEye } from "react-icons/ai";
 
 export const ImageDetail = () => {
 
-    const {id} = useParams()
+    const {id, display, setDisplay} = useContext(DetailContext)
     
     const { loading, error, data } = useQuery(GET_IMAGE, {
         variables:  { id },
     },)
     
     console.log("router", data)
-    if(loading) {
-        return <p>Loading...</p>
-    }
+
     if(error){
         return <p>Error</p>
     }
 
-    return( 
-        <Div>
+    const handleClick = () =>{
+        setDisplay('none')
+    }
+
+    return(loading? 
+        <Div display={display}>
+            <h1>LOADING......</h1>
+        </Div>
+        :
+        <Div display={display}>
             <ImageContainer >
                 <Image src={data.image.largeImageURL} />
                 <DetailContainer>
@@ -40,7 +48,7 @@ export const ImageDetail = () => {
                             <H2>{data.image.views}</H2>
                         </Views>
                 </DetailContainer>
-                    <ExitIconContainer to='/' >
+                    <ExitIconContainer onClick={handleClick} >
                         <AiOutlineClose />
                     </ExitIconContainer>
             </ImageContainer>

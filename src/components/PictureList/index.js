@@ -3,21 +3,17 @@ import { Pictures } from './styles'
 
 import { Picture } from '../picture'
 import Loading from '../LoadingSVG/Loading'
-
-import { useImages } from '../../hooks/useImages'
+ 
 import useNearScreen from '../../hooks/useNearScreen'
 
 import debounce from 'just-debounce-it'
 
-import { useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-export const PictureList = ({category}) =>{
+export const PictureList = ({loading, state, setPage, error}) =>{
 
-    // const { category } = useParams()
-
-    // console.log(category)
-
-    const {loading, state, error, setPage} = useImages(category)
+    
+    const history = useHistory()
 
     const externalRef = useRef()
     const { isNearScreen } = useNearScreen({ 
@@ -32,17 +28,23 @@ export const PictureList = ({category}) =>{
         if(isNearScreen) debounceHandleNextPage()
     }, [debounceHandleNextPage, isNearScreen])
 
+    console.log("state", state)
 
+    if(error) {
+        history.push(`/error`)
+    }
 
-    return(state?
+    return(state.length?
         <>
             <Pictures>
                 {state.map(item => <Picture item={item} key={item.id} />)}
             </Pictures>
             <div id="visor" ref={externalRef}></div>
-        </> :
-                <Loading />
-
-
+        </>
+        : loading? <Loading />
+        : <h1>lo sentimos, no se encontraron resultados</h1>
     )
+
+
+    
 }

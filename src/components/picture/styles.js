@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
-export const PictureContainer = styled(Link)`
+export const PictureContainer = styled.div`
+    border:none;
     &:nth-child(11n+1){
         grid-column: span 1;
     }
@@ -30,4 +30,5 @@ export const Image = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border:none;
 `
