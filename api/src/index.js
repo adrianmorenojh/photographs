@@ -47,19 +47,14 @@ const resolvers = {
       const page = args.page
       const category = args.category
       const keyword = args.keyword
-      console.log(category);
-      console.log(page);
-      console.log(keyword)
       return fetchImages(page, category, keyword)
     },
     image:(_, args) => {
       const id = args.id
-      console.log(id)
       return fetchImageById(id)
     },
     results:(_, args) =>{
       const keyword = args.keyword
-      console.log(keyword)
       return fetchImagesByName(keyword)
     }
   }
