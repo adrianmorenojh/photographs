@@ -59,7 +59,16 @@ const resolvers = {
     }
   }
 };
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({   
+  introspection: true, // do this only for dev purposes
+  playground: true, // do this only for dev purposes
+  typeDefs,
+  resolvers,
+  context: ({ req }) => {
+    const { id, email } = req.user || {}
+    return { id, email }
+  }
+});
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
