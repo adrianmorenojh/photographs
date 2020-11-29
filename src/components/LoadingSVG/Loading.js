@@ -1,10 +1,45 @@
-import React from 'react'
-import { H1 } from './styles'
+import React from "react";
+import { Div, Container, Skeleton } from "./styles";
 
 export default () => {
-
-  console.log("lloadding")
-  return(
-    <H1>LOADING...</H1>
-  )
-}
+  return (
+    <Container>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+      <Div>
+        <Skeleton />
+      </Div>
+    </Container>
+  );
+};

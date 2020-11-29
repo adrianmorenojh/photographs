@@ -10,6 +10,8 @@ import { GET_IMAGE } from '../../gql/queries/images'
 import { useQuery } from '@apollo/client';
 
 import { AiOutlineClose, AiFillEye } from "react-icons/ai";
+import Skeleton from 'react-loading-skeleton'
+
 
 export const ImageDetail = () => {
 
@@ -31,7 +33,7 @@ export const ImageDetail = () => {
 
     return(loading? 
         <Div display={display}>
-            <h1>LOADING......</h1>
+            <h1>Loading..</h1>
         </Div>
         :
         <Div display={display}>

@@ -37,7 +37,7 @@ function App() {
       <Header theme = {theme} toggleTheme = {themeToggler}  />
       <Searcher />
       <PictureCategory />
-      <Suspense fallback={<h1>LOADIIIIING....</h1>}>
+      <Suspense fallback={null}>
       <DetailContextProvider> 
         <ImageDetail />
         <Switch>

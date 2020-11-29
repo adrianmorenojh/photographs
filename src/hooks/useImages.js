@@ -8,11 +8,12 @@ const INITIAL_PAGE = 1
 
 export const useImages = ( category, keyword ) =>{
     const [page, setPage] = useState(1)
-    const [state, setState] = useState([])  
+    const [state, setState] = useState(null)  
     const { loading, error, data } = useQuery(GET_IMAGES, {
         variables:  { page, category, keyword},
     },)
-    console.log('useimages', data)
+
+    console.log('useimages', error)
     useEffect(() => {
         setPage(1)
     },[category, keyword])

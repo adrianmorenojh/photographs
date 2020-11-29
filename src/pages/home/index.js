@@ -9,7 +9,7 @@ export default function Home(){
 
     return(
         <>  
-            <PictureList loading={loading} state={state} setPage={setPage} error={error}/>
+            <PictureList loading={loading} state={state} setPage={setPage} error={error} />
         </>
 
     )
