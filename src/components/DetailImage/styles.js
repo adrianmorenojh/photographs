@@ -20,8 +20,13 @@ export const ExitIconContainer = styled.div`
     top: -14px;
     right: -16px;
     color:white;
+    border-radius: 5px;
+    display: flex;
+    padding: 1px;
+    background: rgba(0, 0, 0, .5);
     @media(max-width:767px){
-        display:none;
+        top: 5px;
+        right: 5px;
     }
 `
 
