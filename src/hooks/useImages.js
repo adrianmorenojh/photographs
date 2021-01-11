@@ -13,7 +13,6 @@ export const useImages = ( category, keyword ) =>{
         variables:  { page, category, keyword},
     },)
 
-    console.log('useimages', error)
     useEffect(() => {
         setPage(1)
     },[category, keyword])

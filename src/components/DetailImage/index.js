@@ -10,8 +10,6 @@ import { GET_IMAGE } from '../../gql/queries/images'
 import { useQuery } from '@apollo/client';
 
 import { AiOutlineClose, AiFillEye } from "react-icons/ai";
-import Skeleton from 'react-loading-skeleton'
-
 
 export const ImageDetail = () => {
 
@@ -21,7 +19,6 @@ export const ImageDetail = () => {
         variables:  { id },
     },)
     
-    console.log("router", data)
 
     if(error){
         return <p>Error</p>

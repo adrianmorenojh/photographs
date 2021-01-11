@@ -9,7 +9,6 @@ export const Category = () =>{
     const { category } = useParams()
     const {loading, error, state, setPage} = useImages(category, "")
 
-    console.log(category)
 
     return(
     <>

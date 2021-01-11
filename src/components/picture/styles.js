@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const PictureContainer = styled.div`
     border:none;
+    cursor:pointer;
     &:nth-child(11n+1){
         grid-column: span 1;
     }

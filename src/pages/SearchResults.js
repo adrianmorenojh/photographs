@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 export const SearchResults = () =>{
 
     const { keyword } = useParams()
-    console.log("the keiguord", keyword)
+
     const {loading, error, state, setPage} = useImages('', keyword)
 
     return(

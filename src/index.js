@@ -6,7 +6,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import App from './App'
 
 const client = new ApolloClient({
-    uri:'http://localhost:4000/',
+    uri:'https://api-petgram-ten.vercel.app/graphql',
     cache: new InMemoryCache()
 });
 
