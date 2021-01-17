@@ -1,50 +1,54 @@
-import React, { useEffect, useRef, useCallback } from 'react'
-import { Pictures } from './styles'
+import React, { useEffect, useRef, useCallback } from "react";
+import { Pictures } from "./styles";
 
-import { Picture } from '../picture'
-import Loading from '../LoadingSVG/Loading'
-import { ErrorComponent } from '../errorComponent'
- 
-import useNearScreen from '../../hooks/useNearScreen'
+import { Picture } from "../picture";
+import Loading from "../LoadingSVG/Loading";
+import { ErrorComponent } from "../errorComponent";
 
-import debounce from 'just-debounce-it'
+import useNearScreen from "../../hooks/useNearScreen";
 
-import { useHistory } from 'react-router-dom'
+import debounce from "just-debounce-it";
 
-export const PictureList = ({loading, state, setPage, error}) =>{
+import { useHistory } from "react-router-dom";
 
-    const history = useHistory()
+export const PictureList = React.memo(({ loading, state, setPage, error }) => {
+  const history = useHistory();
 
-    const externalRef = useRef()
-    const { isNearScreen } = useNearScreen({ 
-        externalRef: loading? null: externalRef, 
-        once:false
-    })
-    const debounceHandleNextPage = useCallback(debounce(
-        () => setPage(prevPage => prevPage + 1), 100
-    ),[setPage])
+  const externalRef = useRef();
+  const { isNearScreen } = useNearScreen({
+    externalRef: loading ? null : externalRef,
+    once: false,
+  });
+  const debounceHandleNextPage = useCallback(
+    debounce(() => setPage((prevPage) => prevPage + 1), 100),
+    [setPage]
+  );
 
-    useEffect(function(){
-        if(isNearScreen) debounceHandleNextPage()
-    }, [debounceHandleNextPage, isNearScreen])
+  useEffect(
+    function () {
+      if (isNearScreen) debounceHandleNextPage();
+    },
+    [debounceHandleNextPage, isNearScreen]
+  );
 
+  if (error) {
+    history.push(`/error`);
+  }
 
-    if(error) {
-        history.push(`/error`)
-    }
-
-
-    return(state? state.length ?
-        <>
-            <Pictures>
-                {state.map(item => <Picture item={item} key={item.id} />)}
-            </Pictures>
-            <div id="visor" ref={externalRef}></div>
-        </>:<ErrorComponent />
-        : <Loading />
- 
+  return state ? (
+    state.length ? (
+      <>
+        <Pictures>
+          {state.map((item, index) => (
+            <Picture item={item} key={index} />
+          ))}
+        </Pictures>
+        <div id="visor" ref={externalRef}></div>
+      </>
+    ) : (
+      <ErrorComponent />
     )
-
-
-    
-}
+  ) : (
+    <Loading />
+  );
+});
