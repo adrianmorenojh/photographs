@@ -11,7 +11,7 @@ export const PictureOptionContainer = styled.div`
   display: flex;
   overflow-x: scroll;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin: 5px;
   ::-webkit-scrollbar {
     width: 8px;
@@ -61,6 +61,9 @@ export const PictureOptionContainer = styled.div`
 
   @media all and (min-width: 1024px) {
     margin: 5px 105px;
+  }
+  @media all and (min-width: 1566px) {
+    justify-content: center;
   }
 `;
 export const Div = styled.div`
