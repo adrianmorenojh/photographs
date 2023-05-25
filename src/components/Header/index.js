@@ -7,7 +7,7 @@ import { Toggle } from '../toggler'
 export const Header = ({theme, toggleTheme}) =>{
     return(
         <HeaderContainer>
-            <Image src="https://www.isalud.com/blog/wp-content/uploads/2018/07/Visi%C3%B3n-borrosa-repentina-transitoria.jpg" alt="" />
+            <Image src="https://img.freepik.com/foto-gratis/santa-maddalena-cordillera-dolomitastirol-sur_661209-237.jpg?size=626&ext=jpg" alt="" />
             <P>Photographs</P>
             <Toggle theme={theme} toggleTheme={toggleTheme}/>
         </HeaderContainer>
